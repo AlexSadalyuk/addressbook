@@ -1,0 +1,94 @@
+﻿@using Core.Models
+@model IEnumerable<UserShortInfo>
+
+@{
+    ViewData["Title"] = "Address Book";
+}
+
+
+<div class="card hoverable">
+    <div class="card-image">
+        <span class="card-title">List of Persons</span>
+    </div>
+    <div class="card-content">
+        <ul class="collection" id="collection-users" style="min-height: 50vh;">
+            @if(Model.Count() == 0)
+            {
+                <li class="collection-item">No users found!</li>
+            }
+            @foreach(UserShortInfo user in Model)
+            {
+                <li class="collection-item item-number-@user.UserId">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <span class="left-align item-block"><b>Name</b>: @user.Firstname @user.Lastname | <b>Location</b>: @user.City, @user.Country</span>
+                            <div class="right">
+                                <a class="show-info btn" data-userid="@user.UserId">Show</a>
+                                <a class="remove-user btn" data-userid="@user.UserId">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            }
+
+        </ul>
+
+        <a href="#modal2" id="add-user" class="btn-floating btn-large waves-effect waves-light red modal-trigger"><i class="material-icons">+</i></a>
+    </div>
+</div>
+
+<div>
+
+    <div id="modal1" class="modal">
+
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <form id="user-create">
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="firstname" type="text" name="firstname">
+                        <label for="firstname">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="lastname" type="text" name="lastname">
+                        <label for="lastname">Last Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="Address" type="text" name="address">
+                        <label for="Address">Address</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="City" type="text" name="city"> 
+                        <label for="City">City</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="Country" type="text" name="country">
+                        <label for="Country">Country</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="Company" type="text" name="company">
+                        <label for="Company">Company</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="row" id="phones-list">
+
+                    </div>
+
+                    <a id="add-phone" class="waves-effect waves-light btn">Add Phone</a>
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" id="create-user-btn" class="waves-effect waves-green btn-flat">Create</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+</div>
+

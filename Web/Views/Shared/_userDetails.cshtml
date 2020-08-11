@@ -1,0 +1,15 @@
+﻿@using Core.Models
+@model UserDetails
+
+<li class="collection-item item-number-@Model.UserId">
+    <div class="card hoverable">
+        <div class="card-content">
+            <span class="left-align item-block"><b>Name</b>: @Model.Firstname @Model.Lastname | <b>Location</b>: @Model.City, @Model.Country</span>
+            <div class="right">
+                <a class="show-info btn" data-userid="@Model.UserId">Show</a>
+                <a class="remove-user btn" data-userid="@Model.UserId">Delete</a>
+            </div>
+        </div>
+    </div>
+
+</li>
